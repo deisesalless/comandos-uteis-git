@@ -17,345 +17,482 @@ Ideal para:
 
 ## 1. Inicializa o git para fazer o versionamento no repositório
 
+Exemplo:
 ``` bash
-git init
+  git init
 ```
 
-## 2. Remover inicialização incorreta do git init na pasta incorreta
+## 2. Remove inicialização incorreta do ```git init``` na pasta incorreta
 
+Exemplo:
 ``` bash
-rm -rf .git
+  rm -rf .git
 ```
 
 ## 3. Adiciona um repositório remoto criado (vazio) em uma pasta criada localmente de um novo projeto
 
+Exemplo:
 ``` bash
-git remote add origin link_do_github_aqui.git
+  git remote add origin link_do_github_aqui.git
 ```
 
-> O correto é você primeiro criar a pasta do seu projeto e criar o
-> projeto de fato, depois você cria o seu repositório sem o readme, dai
-> você entra na pasta do seu projeto e dá o comando
-
-------------------------------------------------------------------------
+> Fluxo de utilização desse comando:
+> 1. Crie a pasta do projeto
+> 2. Desenvolva o projeto dentro dela
+> 3. Crie o repositório remoto sem README
+> 4. Na pasta do projeto, execute o comando para vincular o repositório remoto ao local.
 
 ## 4. Visualizar histórico
 
+4.1 Exibe de forma verbosa todos os logs
+
+Exemplo:
 ``` bash
-git log
-// exibe de forma verbosa todos os logs
-
-git log --oneline
-// exibe de forma resumida em uma linha todos os logs
-
-git log -3
-// exibe de forma verbosa os 3 últimos logs
-
-git log -- src/main/java/service/ArquivoService.java
-// exibe de forma verbosa o log de um arquivo específico
-
-git log -- node_modules/
-// exibe de forma verbosa o log de um diretório específico
-
-git log --graph
-// exibe de forma gráfica os logs, as IDEs tb fazem isso sem esse comando
-
-git log -p -2
-// Exibe o histórico com a diferença das duas últimas alterações
-
-git log --stat
-/*
-Exibir resumo do histórico 
-(hash completa, autor, data, comentário e quantidade de alterações (+/-)
-*/
-
-git log --pretty=format:"%h - %an, %ar : %s"
-/*
-%h: Abreviação do hash;
-%an: Nome do autor;
-%ar: Data;
-%s: Comentário
-*/
-
-git log --diff-filter=M -- src/main/java/service/ArquivoService.java
-/*
-Exibir histórico modificação de um arquivo
-"M" pode ser substituido por: 
-Adicionado (A), Copiado (C), Apagado (D), 
-Modificado (M), Renomeado (R), entre outros.
-*/
-
-git log --author=usuario
-// Exibir histório de um determinado autor
+  git log
 ```
 
-------------------------------------------------------------------------
+4.2 Exibe todos os logs de forma resumida em uma linha
+
+Exemplo:
+``` bash
+  git log --oneline
+```
+
+4.3 Exibe de forma verbosa os 3 últimos logs
+
+Exemplo:
+``` bash
+  git log -3
+```
+
+4.4 Exibe de forma verbosa o log de um arquivo específico
+
+Exemplo:
+``` bash
+  git log -- src/main/java/service/ArquivoService.java
+```
+
+4.5 Exibe de forma verbosa o log de um diretório específico
+
+Exemplo:
+``` bash
+  git log -- node_modules/
+```
+
+4.6 Exibe de forma gráfica os logs, as IDEs tb fazem isso sem esse comando
+
+Exemplo:
+``` bash
+  git log --graph
+```
+
+4.7 Exibe o histórico com a diferença das duas últimas alterações
+
+Exemplo:
+``` bash
+  git log -p -2
+```
+
+4.8 Exibe resumo do histórico
+
+Exemplo:
+``` bash
+  git log --stat
+```
+> Exibir resumo do histórico
+> (hash completa, autor, data, comentário e quantidade de alterações (+/-)
+
+Exemplo:
+``` bash
+  git log --pretty=format:"%h - %an, %ar : %s"
+```
+> Fluxo de utilização desse comando:
+> 1. %h: Abreviação do hash;
+> 2. %an: Nome do autor;
+> 3. %ar: Data;
+> 4. %s: Comentário
+
+Exemplo:
+``` bash
+  git log --diff-filter=M -- src/main/java/service/ArquivoService.java
+```
+> Fluxo de utilização desse comando(Exibir histórico modificação de um arquivo):
+> - "M" pode ser substituido por:
+> - Adicionado (A), Copiado (C), Apagado (D),
+> - Modificado (M), Renomeado (R), entre outros.
+
+Exemplo:
+``` bash  
+  git log --author=usuario
+```
+> Exibir histório de um determinado autor
 
 ## 5. Remove o arquivo do stage
 
+5.1 Exemplo:
 ``` bash
 git reset ARQUIVO.JAVA
+```
 
-// ou
-
+5.2 Exemplo:
+``` bash
 git rm --cached nome_do_arquivo.java
 ```
 
-------------------------------------------------------------------------
+## 6. Realiza o commit com a mensagem
 
-## 6. Adicionando um arquivo esquecido ao commit anterior sem alterar a mensagem
-
+Exemplo:
 ``` bash
-git commit --amend --no-edit
+  git commit -m 'mensagem'
 ```
 
-------------------------------------------------------------------------
+## 7. Adicionando um arquivo esquecido ao commit anterior sem alterar a mensagem
 
-## 7. Alterar mensagem de commit
-
+Exemplo:
 ``` bash
-git commit --amend -m 'Estou corrigindo a mensagem do ultimo commit'
+  git commit --amend --no-edit
 ```
 
-------------------------------------------------------------------------
+## 8. Alterar mensagem de commit
 
-## 8. Lista as branches
-
+Exemplo:
 ``` bash
-git branch -a
-// lista branches locais e remotas
-
-git branch -r
-// lista somente branches remotas
+  git commit --amend -m 'Estou corrigindo a mensagem do ultimo commit'
 ```
 
-------------------------------------------------------------------------
+## 9. Lista as branches
 
-## 9. Lista os repositórios remotos
-
+Exemplo:
 ``` bash
-git remote
-// listar  remota
-
-git remote -v
-// mostra os remotes + URLs
+  git branch -a
 ```
+> Lista branches locais e remotas
 
-------------------------------------------------------------------------
+Exemplo:
+``` bash
+  git branch -r
+```
+> Lista somente branches remotas
 
 ## 10. Mostra branches locais + último commit de cada branch.
 
+Exemplo:
 ``` bash
-git branch -v
+  git branch -v
 ```
 
-------------------------------------------------------------------------
+## 11. Lista os repositórios remotos
 
-## 11. Configurar tracking da branch
-
+Exemplo:
 ``` bash
-git push --set-upstream origin NOME-BRANCH
-// ou
-git push -u origin NOME-BRANCH
+  git remote
 ```
+> Listar  remota
 
-> Isso configura **tracking da branch**. Depois disso você pode usar:
-
+Exemplo:
 ``` bash
-git pull
-git push
+  git remote -v
 ```
+> Mostra os remotes + URLs
 
-------------------------------------------------------------------------
+## 12. Configura tracking da branch
 
-## 12. Melhor prática quando quer revisar antes:
-
+Exemplo:
 ``` bash
-git fetch
-git log origin/main
-git merge origin/main
+  git push --set-upstream origin NOME-BRANCH
 ```
+> Depois disso você pode usar: git push
 
-> git fetch: comando que busca branches e/ou tags (coletivamente,
-> "refs") de um ou mais outros repositórios, juntamente com os objetos
-> necessários para completar seus históricos. Muito usado quando estamos
-> trabalhando em um repositório que é constantemente atualizado.
-
-------------------------------------------------------------------------
-
-## 13. Fetch + Pull separado
-
+Exemplo:
 ``` bash
-git fetch 
-// (aqui vai retornar tudo que foi modificado e aonde, antes de fazer o pull)
-
-git pull
-//(aqui atualiza direto)
+  git push -u origin NOME-BRANCH
 ```
+> Depois disso você pode usar: git push
 
-------------------------------------------------------------------------
+## 13. Melhor prática quando quer revisar antes:
 
-## 14. git rebase reaplica seus commits em cima de outra base.
-
+Exemplo:
 ``` bash
-git rebase branch_aqui
+  git fetch
+  git log origin/main
+  git merge origin/main
 ```
+> **git fetch**: comando que busca branches e/ou tags (coletivamente, "refs") de um ou mais outros repositórios, juntamente com os objetos necessários para completar seus históricos. Muito usado quando estamos trabalhando em um repositório que é constantemente atualizado.
 
-/* Exemplo de uso: git checkout feature/login git rebase main */
+## 14. ```git rebase``` reaplica seus commits em cima de outra base
 
-------------------------------------------------------------------------
+Exemplo:
+``` bash
+  git rebase branch_aqui
+```
+> Exemplo de uso:
+> git checkout feature
+> git rebase main
 
 ## 15. Descartar alterações do arquivo
 
+Exemplo:
 ``` bash
-git checkout -- .
-// descarta de todos os arquivos - ANTIGO
+  git checkout -- .
+```
+> Descarta de todos os arquivos - ANTIGO
 
-git restore .
-// descarta de todos os arquivos - MODERNO
+Exemplo:
+``` bash
+  git restore .
+```
+> Descarta de todos os arquivos - MODERNO
 
-// exemplo de arquivos específicos:
+Exemplo:
+``` bash
 git checkout -- nomeArquivo.java
 git restore nomeArquivo.java
 ```
+> Descarta de arquivos específicos (utilize um ou outro)
 
-------------------------------------------------------------------------
+## 16. Git rebase: Reaplica os commits da branch atual em cima de outra branch, criando um histórico linear. Muito usado para atualizar uma branch de feature com as mudanças da branch principal
 
-## 16. Git rebase (explicação completa)
-
+16.1 Exemplo de uso do git rebase:
 ``` bash
-git checkout feature-login
-git rebase main
+  git checkout feature-login
+  git rebase main
 ```
+``` markdown
+O Git pega os commits da feature-login, move o ponteiro para o topo da 
+main e reaplica os commits da feature como se tivessem sido feitos 
+depois da main.
 
-Antes do rebase: main A---B---C
+Antes do rebase:
+main
+A---B---C
 
-feature ---D---E
+feature
+     \---D---E
+     
 
-Depois do rebase: main A---B---C
+Depois do rebase:
+main
+A---B---C
 
-feature ---D'---E'
-
+feature
+         \---D'---E'
+         
 Os commits são recriados (D' e E') e recebem novos hashes.
 
-Regra importante\
-Evite usar rebase em commits que já foram enviados para o repositório
+Regra importante
+Evite usar rebase em commits que já foram enviados para o repositório 
 remoto, pois ele altera o histórico.
-
-------------------------------------------------------------------------
-
-## 17. Force push após rebase
-
-``` bash
-git push origin feature/a --force
 ```
 
-------------------------------------------------------------------------
-
-## 18. Cherry-pick
-
-``` bash
-git cherry-pick hash_commit_aqui
+16.2 Exemplo de uso do ```git rebase -i```
+``` markdown
+  Permite editar, reorganizar, juntar ou remover commits antes de 
+  reaplicá-los na nova base. Muito usado para limpar histórico antes 
+  de fazer push ou abrir um Pull Request.
 ```
 
-------------------------------------------------------------------------
-
-## 19. Comparar commits, branches ou arquivos
-
+Exemplo:
 ``` bash
-git diff A_aqui B_aqui
+  git rebase -i HEAD~3
 ```
 
-------------------------------------------------------------------------
-
-## 20. Mostrar detalhes de um commit
-
-``` bash
-git show hash_commit_aqui
+``` markdown
+  Abre um editor com os 3 últimos commits.
+  Exemplo do editor:
+  
+  pick a1b2c3 Cria entidade Usuario
+  pick d4e5f6 Cria endpoint de login
+  pick g7h8i9 Corrige bug no login
+  
+  
+  Comandos possíveis:
+  pick   → mantém o commit
+  reword → altera a mensagem do commit
+  edit   → pausa o rebase para editar o commit
+  squash → junta o commit com o anterior
+  drop   → remove o commit
+  
+  
+  Exemplo juntando commits:
+  pick a1b2c3 Cria entidade Usuario
+  pick d4e5f6 Cria endpoint de login
+  squash g7h8i9 Corrige bug no login
+  
+  Resultado:
+  1 commit:
+  Cria endpoint de login (com correção incluída)
+  
+  
+  Continuar o rebase após edição:
 ```
 
-------------------------------------------------------------------------
+Exemplo:
+``` bash
+  git add .
+  git commit --amend
+  git rebase --continue
+```
+
+## 17. Caso você tenha usado o git rebase e ocorrido um conflito que você já resolveu com um commit, use este comando para forçar a atualização remota da branch. Cuidado ao usar este comando quando duas pessoas estão trabalhando na mesma branch
+
+Exemplo:
+``` bash
+  git push origin feature/a --force
+```
+
+## 18. Seleciona um commit específico de outra branch e aplica suas alterações na branch atual. Útil para trazer commits validados da develop ou stage para a branch de produção (main), ou para pegar um commit específico de um colega utilizando o hash do commit
+
+Exemplo:
+``` bash
+  git cherry-pick hash_commit_aqui
+```
+
+## 19. Compara commits, branches ou arquivos
+
+Exemplo:
+``` bash
+  git diff A_aqui B_aqui
+```
+
+## 20. Mostra detalhes de um commit
+
+Exemplo:
+``` bash
+  git show hash_commit_aqui
+```
 
 ## 21. Remover arquivo/diretório
 
+2.1 Remove o arquivo (quando você quer deletar o arquivo)
+
+Exemplo:
 ``` bash
 git rm UsuarioService.java
 git commit -m "Remove classe não utilizada"
 ```
+> Fluxo de utilização desse comando:
+> 1. Remove o arquivo da pasta do projeto
+> 2. Adiciona a remoção no stage automaticamente
+> 3. Precisa fazer commit para confirmar
 
+2.2 Remove o diretório (quando você quer deletar o diretório)
+
+Exemplo:
 ``` bash
-git rm diretorio_utils
-git commit -m "Remove pasta utils"
+  git rm diretorio_utils
+  git commit -m "Remove pasta utils"
+```
+> Fluxo de utilização desse comando:
+> 1. Remove o diretório do projeto
+> 2. Adiciona a remoção no stage automaticamente
+> 3. Precisa fazer commit para confirmar
+
+2.3 Remove o arquivo/diretório (quando você quer ignorar no versionamento)
+
+Exemplo:
+``` bash
+  git rm --cached dados.txt
+  git commit -m "Remove dados.txt do versionamento"
+```
+> Fluxo de utilização desse comando:
+> 1. Remove o arquivo do versionamento do git, mas mantém o arquivo no computador
+> 2. Adiciona a remoção do arquivo no stage automaticamente
+> 3. Precisa fazer commit para confirmar
+> 4. ATENÇÃO: Após isso, adicione o arquivo no .gitignore para evitar que ele seja versionado novamente
+
+## 22. Deletar uma branch
+22.1 Deletar branch após o merge
+
+Exemplo:
+``` bash
+  git branch -d nome_da_branch
 ```
 
+22.2 Força deletar branch sem o merge
+
+Exemplo:
 ``` bash
-git rm --cached dados.txt
-git commit -m "Remove dados.txt do versionamento"
+  git branch -D nome_da_branch
 ```
 
-------------------------------------------------------------------------
+## 23. Arquivar alterações
 
-## 22. Apagar uma branch
+23.1 Arquiva as alterações não commitadas
 
+Exemplo: 
 ``` bash
-git branch -d nome_da_branch
-// após o merge
-
-git branch -D nome_da_branch
-// força apagar a branch
+  git stash
 ```
 
-------------------------------------------------------------------------
+23.2 Lista as alterações arquivados
 
-## 23. Git stash
-
+Exemplo: 
 ``` bash
-git stash
-// arquiva as alterações não commitadas
-
-git stash list
-// lista as alterações arquivados
-
-git stash apply
-// aplica as alterações arquivadas
-
-git stash pop
-// desarquiva as alterações
-
-git stash clear
-// apagar as alterações arquivadas
+  git stash list
 ```
 
-------------------------------------------------------------------------
+23.3 Aplica as alterações arquivadas
+
+Exemplo: 
+``` bash
+  git stash apply
+```
+
+23.4 Desarquiva as alterações
+
+Exemplo: 
+``` bash
+  git stash pop
+```
+
+23.5 Apagar as alterações arquivadas
+
+Exemplo: 
+``` bash
+  git stash drop
+```
 
 ## 24. Criar e entrar na branch
 
+24.1 Cria e entra - ANTIGO
+
+Exemplo:
 ``` bash
-git checkout -b feature/nome-branch
-// antigo - cria e entra
-
-git switch -c feature/nome-branch
-// novo - cria e entra
-
-git checkout feature/nome-branch
-// antigo - entra
-
-git switch feature/nome-branch
-// novo - entra
+  git checkout -b feature/nome-branch
 ```
 
-------------------------------------------------------------------------
+24.2 Cria e entra - MODERNO
+
+Exemplo:
+``` bash
+  git switch -c feature/nome-branch
+```
+
+24.3 Entra - ANTIGO
+
+Exemplo:
+``` bash
+  git checkout feature/nome-branch
+```
+
+24.4 Entra - MODERNO
+
+Exemplo:
+``` bash
+  git switch feature/nome-branch
+```
 
 ## 25. Desfazer commit local
+> Obs.: Posso trocar HEAD~2 pelo hash do commit, mas isso é ruim, só é bom desfazer commit que são recentes
+> Possui 4 opções:
 
+25.1 
 ``` bash
 git reset --hard HEAD~2
 git reset --mixed HEAD~2
 git reset --soft HEAD~1
 git revert hash-do-commit
 ```
-
-------------------------------------------------------------------------
 
 ## 26. Desfazer commit remoto
 
@@ -365,8 +502,6 @@ git revert hash-do-commit
 git push nome-branch
 ```
 
-------------------------------------------------------------------------
-
 ## 27. Ignorar arquivo ou pasta
 
 ``` bash
@@ -374,23 +509,17 @@ echo arquivo.txt >> .gitignore
 echo node_modules_nome_pasta/ >> .gitignore
 ```
 
-------------------------------------------------------------------------
-
 ## 28. Renomear repositório remoto
 
 ``` bash
 git remote set-url origin NOVA_URL_DO_REPOSITORIO
 ```
 
-------------------------------------------------------------------------
-
 ## 29. Vincular repositório local com repositório remoto
 
 ``` bash
 git remote add origin git@github.com:deise/curso-git.git
 ```
-
-------------------------------------------------------------------------
 
 ## 30. Clonar apenas uma branch específica
 
