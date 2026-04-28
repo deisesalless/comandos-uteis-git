@@ -469,6 +469,22 @@ git clone REPO --branch nome_branch --single-branch
 
 ------------------------------------------------------------------------
 
+## 26. Atualiza as referências das branches locais
+
+Atualiza as referências das branches remotas e remove localmente qualquer branch que não exista mais no remote.
+
+``` bash
+git fetch --prune
+```
+
+Também pode fazer... Apagar branches locais que já foram deletadas no remote:
+
+``` bash
+git remote prune origin
+```
+
+------------------------------------------------------------------------
+
 # 🚀 Observação
 
 Este guia é focado em **produtividade e consulta rápida**.
